@@ -23,6 +23,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print("ViewDidLoad")
+        // генерируем случайное число
+        self.number = Int.random(in: 1...50)
+        // передаем значение случайного числа в label
+        self.label.text = String(self.number)
     }
 
 
@@ -65,7 +70,7 @@ class ViewController: UIViewController {
                 }
                 // генерируем случайное число
                 self.number = Int.random(in: 1...50)
-          // передаем значение случайного числа в label
+                // передаем значение случайного числа в label
                 self.label.text = String(self.number)
             }
         }
