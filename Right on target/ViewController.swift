@@ -8,77 +8,50 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+    // Сущность "Игра"
+    var game: Game!
+    // Элементы на сцене
     @IBOutlet var slider: UISlider!
     @IBOutlet var label: UILabel!
     
-    // загаданное число
-    var number: Int = 0
-    // раунд
-    var round: Int = 0
-    // сумма очков за раунд
-    var points: Int = 0
-    
-    
-    override func loadView() {
-        super.loadView()
-        print("loadView")
-    }
-    
-    
+    // MARK: - Жизненный цикл
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        print("viewDidLoad")
-        // генерируем случайное число
-        self.number = Int.random(in: 1...50)
-        // передаем значение случайного числа в label
-        self.label.text = String(self.number)
+        // Создаем экземпляр сущности "Игра"
+        game = Game(startValue: 1, endValue: 50, rounds: 5)
+        // Обновляем данные о текущем значении загаданного числа
+        updateLabelWithSecretNumber(newText: String(game.currentSecretValue))
     }
     
-    
+    // MARK: - Взаимодействие View - Model
+    // Проверка выбранного пользователем числа
     @IBAction func checkNumber() {
-        // если игра только начинается
-        if self.round == 0 {
-            // генерируем случайное число
-            self.number = Int.random(in: 1...50)
-            // передаем значение случайного числа в label
-            self.label.text = String(self.number)
-            // устанавливаем счетчик раундов на 1
-            self.round = 1
-        } else {
-            // получаем значение на слайдере
-            let numSlider = Int(self.slider.value.rounded())
-            print(numSlider)
-            // сравниваем значение с загаданным
-            // и подсчитываем очки
-            if numSlider > self.number {
-                self.points += 50 - numSlider + self.number
-            } else if numSlider < self.number {
-                self.points += 50 - self.number + numSlider
-            } else {
-                self.points += 50
-            }
-            print("Очки - \(self.points)")
-            if self.round == 5 {
-                // выводим информационное окно
-                // с результатами игры
-                let alert = UIAlertController(
-                    title: "Игра окончена",
-                    message: "Вы заработали \(self.points) очков",
-                    preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Начать заново", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                self.round = 1
-                self.points = 0
-            } else {
-                self.round += 1
-            }
-            // генерируем случайное число
-            self.number = Int.random(in: 1...50)
-            // передаем значение случайного числа в label
-            self.label.text = String(self.number)
+        // Высчитываем очки за раунд
+        game.calculateScore(with: Int(slider.value))
+        // Проверяем, окончена ли игра
+        if game.isGameEnded {
+            showAlertWith(score: game.score)
+            // Начинаем игру заново
+            game.restartGame()
         }
+        else {
+            game.startNewRound()
+        }
+        
+        // Обновляем данные о текущем значении загаданного числа
+        updateLabelWithSecretNumber(newText: String(game.currentSecretValue))
+    }
+    // MARK: - Обновление View
+    // Обновление текста загаданного числа
+    private func updateLabelWithSecretNumber(newText: String ) {
+        label.text = newText
+    }
+    // Отображение всплывающего окна со счетом
+    private func showAlertWith(score: Int) {
+        let alert = UIAlertController(
+            title: "Игра окончена",
+            message: "Вы заработали \(score) очков", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Начать заново", style:.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
-

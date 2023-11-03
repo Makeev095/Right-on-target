@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36A067512AF4FF1100BDD488 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A067502AF4FF1100BDD488 /* Game.swift */; };
 		A77114CF2AEBF23C005A1D6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77114CE2AEBF23C005A1D6A /* AppDelegate.swift */; };
 		A77114D12AEBF23C005A1D6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77114D02AEBF23C005A1D6A /* SceneDelegate.swift */; };
 		A77114D32AEBF23C005A1D6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77114D22AEBF23C005A1D6A /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36A067502AF4FF1100BDD488 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		A77114CB2AEBF23C005A1D6A /* Right on target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Right on target.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A77114CE2AEBF23C005A1D6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A77114D02AEBF23C005A1D6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36A0674F2AF4FEE900BDD488 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				36A067502AF4FF1100BDD488 /* Game.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A77114C22AEBF23C005A1D6A = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +66,7 @@
 		A77114CD2AEBF23C005A1D6A /* Right on target */ = {
 			isa = PBXGroup;
 			children = (
+				36A0674F2AF4FEE900BDD488 /* Model */,
 				A77114CE2AEBF23C005A1D6A /* AppDelegate.swift */,
 				A77114D02AEBF23C005A1D6A /* SceneDelegate.swift */,
 				A77114D22AEBF23C005A1D6A /* ViewController.swift */,
@@ -141,6 +152,7 @@
 				A77114D32AEBF23C005A1D6A /* ViewController.swift in Sources */,
 				A77114CF2AEBF23C005A1D6A /* AppDelegate.swift in Sources */,
 				A77114D12AEBF23C005A1D6A /* SceneDelegate.swift in Sources */,
+				36A067512AF4FF1100BDD488 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +315,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "makey.Right-on-target";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -330,7 +342,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "makey.Right-on-target";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
